@@ -352,7 +352,7 @@ table(K423$X2LOCALECLEAN)
 #check for frequencies 
 K423 %>% count(X8SPEDCLEAN)
 K423 %>% count(E8RECSPE)
-# -9: 5, 1: 1105, 2: 115, NA: 16949
+# (removed)
 #change 2s and NA to zero 
 K423$E8RECSPE[is.na(K423$E8RECSPE)] <- 0
 K423$E8RECSPE[K423$E8RECSPE==2] <- 0
@@ -369,7 +369,7 @@ K423 %>% count(E8RECSPE.F)
 K423$X8LD.for.impute = K423$E8LRNDIS
 #check for frequencies 
 K423 %>% count(X8LD.for.impute)
-# -9: 13, -1: 115, 1: 577, 2: 520, NA: 16949
+# (removed)
 #change 2s and NA to zero 
 K423$X8LD.for.impute[is.na(K423$X8LD.for.impute)] <- 0
 K423$X8LD.for.impute[K423$X8LD.for.impute==2] <- 0
@@ -387,7 +387,7 @@ K423 %>% count(X8LD.for.impute.F)
 K423$X8ADHD.for.impute = K423$E8ADHD
 #check for frequencies 
 K423 %>% count(X8ADHD.for.impute)
-# -9: 31, -1: 115, 1: 217, 2: 862, NA: 16949
+# (removed)
 #change 2s and NA to zero 
 K423$X8ADHD.for.impute[is.na(K423$X8ADHD.for.impute)] <- 0
 K423$X8ADHD.for.impute[K423$X8ADHD.for.impute==2] <- 0
@@ -600,13 +600,13 @@ svyby(~ASIANBCLEAN.F, designs.test)
 
 #number in sample 
 unwtd.count(imp.1.with.weights, designs.test)
-#2715, indicate how many are not missing 
+# (removed)
 svytotal(~X8LD.for.impute.F, designs.test, na.rm=FALSE)
 # total     SE
-#X8LD.for.impute.F0 3732159 363855
-#X8LD.for.impute.F1  196166  32103
+#(removed)
+#(removed)
 table(imp.data.1$X8LD.for.impute.F)
-#582, rounded to 580 
+#(removed) 
 
 
 table(imp.data.1$X8LD.for.impute.F)
@@ -1509,15 +1509,15 @@ imp.data.1.with.LA.chapter.4.0 <- imp.data.1.LANSE %>%
   
 #count students in sped in the LA group, 4th grade 
 table(imp.data.1.with.LA.chapter.4.0$X8SPEDCLEAN)
-# no=606, yes=363
+# (removed)
 
 table(imp.data.1.with.LA.chapter.4.0$CHSEXCLEAN.F)
 
 table(K423$X8SPEDCLEAN)
-# 0 (no), 1(yes) 1=1105
+# (removed)
 
 nrow(imp.data.1.with.LA.chapter.4.0)
-#969
+#(removed)
 
 #imp.data.1.with.LA.chapter.4 %>%
   #mutate(LA_no_sped = ifelse(X8SPEDCLEAN == "0",1,0))
@@ -1533,7 +1533,7 @@ nrow(imp.data.1.with.LA.chapter.4.0)
 
 #table(imp.data.1.with.LA$LA_no_sped, imp.data.1.with.LA$CHSEXCLEAN.F)
 
-#330 lowest 10th percentile no sped 
+#(removed)
 #don"t add count! 
 
 #####################################################
@@ -1710,7 +1710,3 @@ glm.6.mm.LANSE <-glmer(X8SPEDCLEAN ~  as.factor(CHSEXCLEAN.F) + as.factor(HISPCL
                          X2CLSNSSCLEAN + X2CNFLCTCLEAN +
                          (1 |X2KRCETHCLEAN),data = imp.data.1.with.LA.chapter.4.0, family="binomial")
 summary(glm.6.mm.LANSE)
-
-
-####################################################################################################
-t.test
