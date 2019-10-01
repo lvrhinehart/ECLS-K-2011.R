@@ -229,7 +229,7 @@ ADHD_data %>% count(E8RECSPE.F)
 ADHD_data$X8ADHD.for.impute = ADHD_data$E8ADHD
 #check for frequencies 
 ADHD_data %>% count(X8ADHD.for.impute)
-# -9: 31, -1: 115, 1: 217, 2: 862, NA: 16949
+# -9: 31, -1: 115, 1: (removed), 2: (removed), NA: 16949
 #change 2s and NA to zero 
 ADHD_data$X8ADHD.for.impute[is.na(ADHD_data$X8ADHD.for.impute)] <- 0
 ADHD_data$X8ADHD.for.impute[ADHD_data$X8ADHD.for.impute==2] <- 0
@@ -290,7 +290,7 @@ ADHD_data$X8INHIBCLEAN = ADHD_data$X8INTMCQ
 ADHD_data <- ADHD_data %>% replace_with_na(replace = list(X1NRWABLCLEAN = -9))
 summary(ADHD_data$X1NRWABLCLEAN)
 table(ADHD_data$X1NRWABLCLEAN)
-#255 are 393 (lowest)
+
 #OTHER READING AND MATH SCORES
 ADHD_data <- ADHD_data %>% replace_with_na(replace = list(X8READING_CLEAN = -9))
 summary(ADHD_data$X8READING_CLEAN)
@@ -760,7 +760,6 @@ imp.ADHD.1.lpa <- complete(MI_ADHD_for_LPA,1)
 subset(imp.ADHD.1.lpa, subset = (X8ADHD.for.impute.F==1))->ADHD_4th_LPA
 
 summary(ADHD_4th_LPA)
-#221 :)
 
 ADHD_4th_LPA %>% 
   subset(select = c("X8ATTNCLEAN","X8INHIBCLEAN")) %>% 
@@ -847,8 +846,7 @@ adhd.lpa.4.df.merge %>% select(X8SPEDCLEAN==1)%>%
 
 ####################################################################################################
 
-#ADHD in sped categories 
-#217 total 
+#ADHD in sped categories  
 
 svytable(~X8ADHD.for.impute.F+X8LD,design = designs.ADHD.new)
 
@@ -858,27 +856,25 @@ count(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8LD)
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8OHI)
 
 
-#127
 table(ADHD_data$X8ADHD.for.impute.F==1,ADHD_data$X8LD)
-#94
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8SLI)
-#83
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8EBD)
-#27
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8ID)
-#18
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8AUT)
-#16
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8MULT_DIS)
-#14
+
 
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8DD)
-#8
+
 table(ADHD_data$X8ADHD.for.impute.F,ADHD_data$X8NO_CLASSIFICATION)
-#4
+
 
 table(ADHD_data$X8ADHD.for.impute.F)
-#217
 
 table(ADHD_data$X8OHI)
 table(ADHD_data$X8LD)
